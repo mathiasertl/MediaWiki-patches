@@ -6,9 +6,9 @@
  	<script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
 -	<?php foreach ($this->data['sidebar'] as $bar => $cont) { ?>
 +	<?php
-+	global $wgCustomNavBlocksEnable;
++	global $wgCustomNavBlocksEnable, $IP;
 +	if ($wgCustomNavBlocksEnable == "true")
-+		include ('extensions/CustomNavBlocks/CustomNavBlocks.php');
++		include ($IP . '/extensions/CustomNavBlocks/CustomNavBlocks.php');
 +	else
 +		foreach ($this->data['sidebar'] as $bar => $cont) { ?>
  	<div class='portlet' id='p-<?php echo Sanitizer::escapeId($bar) ?>'<?php echo $skin->tooltip('p-'.$bar) ?>>
