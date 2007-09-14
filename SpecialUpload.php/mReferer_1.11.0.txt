@@ -1,0 +1,18 @@
+--- SpecialUpload.php.orig	2007-09-14 17:11:43.000000000 +0200
++++ SpecialUpload.php	2007-09-14 18:02:49.000000000 +0200
+@@ -67,6 +67,7 @@
+ 		$this->mWatchthis         = $request->getBool( 'wpWatchthis' );
+ 		$this->mSourceType        = $request->getText( 'wpSourceType' );
+ 		$this->mDestWarningAck    = $request->getText( 'wpDestFileWarningAck' );
++		$this->mReferer 	  = $request->getText( 'wpReferer' );
+ 
+ 		$this->mAction            = $request->getVal( 'action' );
+ 
+@@ -956,6 +957,7 @@
+ 
+ 	</table>
+ 	<input type='hidden' name='wpDestFileWarningAck' id='wpDestFileWarningAck' value=''/>
++	<input type='hidden' name='wpReferer' id='wpReferer' value='" . $this->mReferer . "'/>
+ 	</form>" );
+ 	}
+ 
