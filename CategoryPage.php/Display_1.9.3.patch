@@ -1,0 +1,11 @@
+--- CategoryPage.php.backup	2007-04-22 11:41:15.000000000 +0200
++++ CategoryPage.php	2007-04-22 11:41:25.000000000 +0200
+@@ -160,7 +160,7 @@
+ 	function addPage( $title, $sortkey, $pageLength ) {
+ 		global $wgContLang;
+ 		$this->articles[] = $this->getSkin()->makeSizeLinkObj( 
+-			$pageLength, $title, $wgContLang->convert( $title->getPrefixedText() ) 
++			$pageLength, $title, $wgContLang->convert( $title->getText() ) 
+ 		);
+ 		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $title->getText() ) );
+ 	}
