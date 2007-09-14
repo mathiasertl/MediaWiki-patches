@@ -1,0 +1,16 @@
+--- MonoBook.php.orig	2007-09-15 00:23:44.000000000 +0200
++++ MonoBook.php	2007-09-15 00:25:18.000000000 +0200
+@@ -148,7 +148,12 @@
+ 			echo $skin->tooltipAndAccesskey('n-mainpage') ?>></a>
+ 	</div>
+ 	<script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
+-	<?php foreach ($this->data['sidebar'] as $bar => $cont) { ?>
++	<?php
++	global $wgCustomNavBlocksEnable;
++	if ($wgCustomNavBlocksEnable == "true")
++		include ('extensions/CustomNavBlocks/CustomNavBlocks.php');
++	else
++		foreach ($this->data['sidebar'] as $bar => $cont) { ?>
+ 	<div class='portlet' id='p-<?php echo Sanitizer::escapeId($bar) ?>'<?php echo $skin->tooltip('p-'.$bar) ?>>
+ 		<h5><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar, $out)) echo $bar; else echo $out; ?></h5>
+ 		<div class='pBody'>
