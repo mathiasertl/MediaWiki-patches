@@ -1,0 +1,20 @@
+--- DynamicPageList2.php.backup	2007-04-16 20:07:59.000000000 +0200
++++ DynamicPageList2.php	2007-04-26 10:29:57.000000000 +0200
+@@ -1825,7 +1825,7 @@
+ 					break;
+ 				case 'sortkey':
+ 				case 'title':
+-					$sSqlWhere .= 'sortkey';
++					$sSqlWhere .= 'page_title';
+ 					break;
+ 				case 'user':
+ 					// rev_user_text can discriminate anonymous users (e.g. based on IP), rev_user cannot (=' 0' for all)
+@@ -1933,7 +1933,7 @@
+ 		
+ 		//get first char used for category-style output
+ 		if( isset($row->sortkey) )
+-			$dplArticle->mStartChar = $wgContLang->convert($wgContLang->firstChar($row->sortkey));
++			$dplArticle->mStartChar = $wgContLang->convert($wgContLang->firstChar($row->page_title));
+ 			
+ 		//SHOW PAGE_COUNTER
+ 		if( isset($row->page_counter) 
