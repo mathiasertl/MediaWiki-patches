@@ -1,0 +1,20 @@
+--- CategoryPage.php.old	2008-08-16 21:46:42.000000000 +0200
++++ CategoryPage.php	2008-08-16 21:48:30.000000000 +0200
+@@ -197,7 +197,7 @@
+ 		$this->articles[] = $isRedirect
+ 			? '<span class="redirect-in-category">' . $this->getSkin()->makeKnownLinkObj( $title ) . '</span>'
+ 			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title );
+-		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $sortkey ) );
++		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $title->getText() ) );
+ 	}
+ 
+ 	function finaliseCategoryState() {
+@@ -228,7 +228,7 @@
+ 			array( $pageCondition,
+ 			       'cl_to' => $this->title->getDBkey() ),
+ 			__METHOD__,
+-			array( 'ORDER BY' => $this->flip ? 'cl_sortkey DESC' : 'cl_sortkey',
++			array( 'ORDER BY' => $this->flip ? 'page_title DESC' : 'page_title',
+ 			       'USE INDEX' => array( 'categorylinks' => 'cl_sortkey' ),
+ 			       'LIMIT'    => $this->limit + 1 ),
+ 			array( 'categorylinks'  => array( 'INNER JOIN', 'cl_from = page_id' ),
