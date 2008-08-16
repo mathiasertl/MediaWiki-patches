@@ -1,0 +1,29 @@
+--- SpecialBrokenRedirects.php.old	2008-08-16 21:50:24.000000000 +0200
++++ SpecialBrokenRedirects.php	2008-08-16 21:51:34.000000000 +0200
+@@ -27,6 +27,16 @@
+ 		$dbr = wfGetDB( DB_SLAVE );
+ 		list( $page, $redirect ) = $dbr->tableNamesN( 'page', 'redirect' );
+ 
++		global $wgExternalRedirectProtocols;
++		if ( $wgExternalRedirectProtocols ) {
++			$expr = '^(';
++                	$arr = array();
++	                foreach( $wgExternalRedirectProtocols as $proto ) {
++        	                $arr[] = ucfirst( $proto );
++               		}
++                	$expr .= implode( '|', $arr ) . '://)';
++		}
++
+ 		$sql = "SELECT 'BrokenRedirects'  AS type,
+ 		                p1.page_namespace AS namespace,
+ 		                p1.page_title     AS title,
+@@ -37,6 +47,9 @@
+ 		      LEFT JOIN $page AS p2 ON (rd_namespace=p2.page_namespace AND rd_title=p2.page_title )
+ 			  	  WHERE rd_namespace >= 0
+ 				    AND p2.page_namespace IS NULL";
++
++		if ( $expr )
++			$sql .= "\nAND rd_title NOT REGEXP '$expr'";
+ 		return $sql;
+ 	}
+ 
