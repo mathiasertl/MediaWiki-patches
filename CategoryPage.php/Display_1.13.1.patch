@@ -1,0 +1,11 @@
+--- CategoryPage.php.orig	2008-09-09 11:09:34.000000000 +0200
++++ CategoryPage.php	2008-09-09 11:14:23.000000000 +0200
+@@ -196,7 +196,7 @@
+ 		global $wgContLang;
+ 		$this->articles[] = $isRedirect
+ 			? '<span class="redirect-in-category">' . $this->getSkin()->makeKnownLinkObj( $title ) . '</span>'
+-			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title );
++			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title, $title->getText() );
+ 		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $sortkey ) );
+ 	}
+ 
