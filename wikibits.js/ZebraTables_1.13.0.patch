@@ -1,0 +1,20 @@
+--- wikibits.js.orig	2008-12-14 16:46:42.000000000 +0100
++++ wikibits.js	2008-12-14 16:47:49.000000000 +0100
+@@ -642,6 +642,17 @@
+ 			span.setAttribute('sortdir','down');
+ 	}
+ 
++	// give every even row the class 'evenrow' and every oddrow the class 'oddrow'
++	for (var j = 0; j < newRows.length; j++) {
++		var rowArray = newRows[j];
++		
++		if ( (j % 2) == 0 ) {
++			rowArray[0].setAttribute('class', 'oddrow');
++		} else {
++			rowArray[0].setAttribute('class', 'evenrow');
++		}
++	}
++		
+ 	// We appendChild rows that already exist to the tbody, so it moves them rather than creating new ones
+ 	// don't do sortbottom rows
+ 	for (var i = 0; i < newRows.length; i++) {
