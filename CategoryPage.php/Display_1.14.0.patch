@@ -1,0 +1,5 @@
+--- CategoryPage.php.orig	2009-03-01 12:47:05.000000000 +0100
++++ CategoryPage.php	2009-03-01 13:35:35.000000000 +0100
+@@ -197 +197 @@
+-			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title );
++			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title, $title->getText() );

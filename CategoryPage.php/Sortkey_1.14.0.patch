@@ -1,0 +1,8 @@
+--- CategoryPage.php.orig	2009-03-01 12:47:05.000000000 +0100
++++ CategoryPage.php	2009-03-01 12:32:08.000000000 +0100
+@@ -198 +198 @@
+-		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $sortkey ) );
++		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $title->getText() ) );
+@@ -228 +228 @@
+-			array( 'ORDER BY' => $this->flip ? 'cl_sortkey DESC' : 'cl_sortkey',
++			array( 'ORDER BY' => $this->flip ? 'page_title DESC' : 'page_title',
