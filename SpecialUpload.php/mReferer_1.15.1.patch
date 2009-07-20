@@ -1,0 +1,18 @@
+--- SpecialUpload.php.orig	2009-07-20 23:08:26.000000000 +0200
++++ SpecialUpload.php	2009-07-20 23:09:31.000000000 +0200
+@@ -82,6 +82,7 @@
+ 		$this->mWatchthis         = $request->getBool( 'wpWatchthis' );
+ 		$this->mSourceType        = $request->getText( 'wpSourceType' );
+ 		$this->mDestWarningAck    = $request->getText( 'wpDestFileWarningAck' );
++		$this->mReferer           = $request->getText( 'wpReferer' );
+ 
+ 		$this->mAction            = $request->getVal( 'action' );
+ 
+@@ -1269,6 +1270,7 @@
+ 			</tr>" .
+ 			Xml::closeElement( 'table' ) .
+ 			Xml::hidden( 'wpDestFileWarningAck', '', array( 'id' => 'wpDestFileWarningAck' ) ) .
++			Xml::hidden( 'wpReferer', '', array( 'id' => 'wpReferer', 'value' => $this->mReferer ) ) .
+ 			Xml::hidden( 'wpForReUpload', $this->mForReUpload, array( 'id' => 'wpForReUpload' ) ) .
+ 			Xml::closeElement( 'fieldset' ) .
+ 			Xml::closeElement( 'form' )
