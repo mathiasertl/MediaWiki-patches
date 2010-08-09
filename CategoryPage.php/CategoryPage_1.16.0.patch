@@ -1,5 +1,5 @@
 --- CategoryPage.php.orig	2010-08-09 18:36:38.000000000 +0200
-+++ CategoryPage.php	2010-08-09 18:46:44.000000000 +0200
++++ CategoryPage.php	2010-08-09 18:58:54.000000000 +0200
 @@ -206,14 +206,14 @@
  		$this->articles[] = $isRedirect
  			? '<span class="redirect-in-category">' .
@@ -13,7 +13,7 @@
  				) . '</span>'
 -			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title );
 -		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $sortkey ) );
-+			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title->getText() );
++			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title, $title->getText() );
 +		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $title->getText() ) );
  	}
  
