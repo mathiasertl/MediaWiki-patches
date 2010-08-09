@@ -1,0 +1,20 @@
+--- CategoryPage.php.orig	2010-08-09 18:36:38.000000000 +0200
++++ CategoryPage.php	2010-08-09 18:45:09.000000000 +0200
+@@ -213,7 +213,7 @@
+ 					array( 'known', 'noclasses' )
+ 				) . '</span>'
+ 			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title );
+-		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $sortkey ) );
++		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $title->getText() ) );
+ 	}
+ 
+ 	function finaliseCategoryState() {
+@@ -244,7 +244,7 @@
+ 				'cat_id', 'cat_title', 'cat_subcats', 'cat_pages', 'cat_files' ),
+ 			array( $pageCondition, 'cl_to' => $this->title->getDBkey() ),
+ 			__METHOD__,
+-			array( 'ORDER BY' => $this->flip ? 'cl_sortkey DESC' : 'cl_sortkey',
++			array( 'ORDER BY' => $this->flip ? 'page_title DESC' : 'page_title',
+ 				'USE INDEX' => array( 'categorylinks' => 'cl_sortkey' ),
+ 				'LIMIT'    => $this->limit + 1 ),
+ 			array( 'categorylinks'  => array( 'INNER JOIN', 'cl_from = page_id' ),
